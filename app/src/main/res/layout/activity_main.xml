@@ -4,18 +4,19 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical">
 
-    <TextView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
         android:id="@+id/status1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:text="Monitoring voice..."
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:text="Monitoring voice..."></TextView>
+        android:textStyle="bold" />
 
-    <EditText
+    <TextView
+        android:id="@+id/status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/status"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
