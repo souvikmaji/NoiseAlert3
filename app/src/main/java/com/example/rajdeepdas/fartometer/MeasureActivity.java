@@ -2,16 +2,16 @@ package com.example.rajdeepdas.fartometer;
 
 /**
  * Created by rajdeepdas on 22/03/15.*/
-import android.app.Activity;
-import android.content.Context;
+
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PowerManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class fartometer extends Activity {
+public class MeasureActivity extends ActionBarActivity {
     /* constants */
     private static final int POLL_INTERVAL = 300;
 
@@ -20,7 +20,6 @@ public class fartometer extends Activity {
 
     /** config state **/
     private int mThreshold=80;
-    private PowerManager.WakeLock mWakeLock;
 
     private Handler mHandler = new Handler();
 
@@ -39,7 +38,48 @@ public class fartometer extends Activity {
         }
     };
 
-    // Create runnable thread to Monitor Voice
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mStatusView = (TextView) findViewById(R.id.status);
+        // Used to record voice
+        mSensor = new SoundMeter();
+        //mDisplay = (SoundLevelView) findViewById(R.id.volume);
+
+    }    // Create runnable thread to Monitor Voice
+
+    /**
+     * *****************************************************
+     */
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("Noise", "==== onResume ===");
+        initializeApplicationConstants();
+        // mDisplay.setLevel(0, mThreshold);
+
+        if (!mRunning) {
+            mRunning = true;
+            start();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i("Noise", "==== onStop ===");
+
+        //Stop noise monitoring
+        stop();
+
+    }
+
     private Runnable mPollTask = new Runnable() {
         public void run() {
 
@@ -59,63 +99,21 @@ public class fartometer extends Activity {
         }
     };
 
-    /*********************************************************/
-
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Defined SoundLevelView in main.xml file
-        setContentView(R.layout.activity_main);
-        mStatusView = (TextView) findViewById(R.id.status);
-
-        // Used to record voice
-        mSensor = new SoundMeter();
-        //mDisplay = (SoundLevelView) findViewById(R.id.volume);
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i("Noise", "==== onResume ===");
-        initializeApplicationConstants();
-       // mDisplay.setLevel(0, mThreshold);
-
-        if (!mRunning) {
-            mRunning = true;
-            start();
-        }
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i("Noise", "==== onStop ===");
-
-        //Stop noise monitoring
-        stop();
-
-    }
     private void start() {
         Log.i("Noise", "==== start ===");
         mSensor.start();
-        if (!mWakeLock.isHeld()) {
-            mWakeLock.acquire();
-        }
+
         //Noise monitoring start
         // Runnable(mPollTask) will execute after POLL_INTERVAL
         mHandler.postDelayed(mPollTask, POLL_INTERVAL);
     }
+
     private void stop() {
         Log.i("Noise", "==== Stop Noise Monitoring===");
-        if (mWakeLock.isHeld()) {
-            mWakeLock.release();
-        }
         mHandler.removeCallbacks(mSleepTask);
         mHandler.removeCallbacks(mPollTask);
         mSensor.stop();
-       // mDisplay.setLevel(0,0);
+        // mDisplay.setLevel(0,0);
         updateDisplay("stopped...", 0.0);
         mRunning = false;
     }
@@ -126,20 +124,34 @@ public class fartometer extends Activity {
 
     }
 
-    private void updateDisplay(String status, double signalEMA) {String sig=Double.toString(signalEMA);
+    private void updateDisplay(String status, double signalEMA) {
+        String sig = Double.toString(signalEMA);
         mStatusView.setText(sig);
-
+        Log.i("status", status);
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-   /// private void callForHelp() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        //stop();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
-        // Show alert when noise thersold crossed
-       // Toast.makeText(getApplicationContext(), "Noise Thersold Crossed, do here your stuff.",
-           //     Toast.LENGTH_LONG).show();
-    //}
+        return super.onOptionsItemSelected(item);
+    }
 
-};
+
+}
