@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\pre-dexed\debug\classes-60a668b351ad8ce9712ac934b0aaaa2e8c69942f.jar" />
+    </item>
+    <item
+        jar="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-cb9efa51179e3e2ddd18d2e7dc17d2a10171fe41.jar" />
+    </item>
+    <item
+        jar="C:\Users\DELL\android-sdks\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-c7299a87d0576601df133fbd796afd86a904868e.jar" />
+    </item>
+    <item
+        jar="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="C:\Users\DELL\Downloads\Fartometer\Fartometer\app\build\intermediates\pre-dexed\debug\classes-4c19d3c51948567730c6e3a50380e2151dcb880f.jar" />
+    </item>
+
+</items>
