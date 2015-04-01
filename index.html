@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Noisealert3 by souvikmaji</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Noisealert3</h1>
+        <h2>Measurement and mapping of noiseon android devices</h2>
+        <a href="https://github.com/souvikmaji/NoiseAlert3" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="1-background-and-description" class="anchor" href="#1-background-and-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Background and Description</h1>
+
+<p>It’s a wireless sensor network where the sensor nodes are android smartphones which detect and measure sound levels. Each node processes to create effective and efficient extraction, manipulation, transport and representation of information derived from data received by the microphone of the smartphone. It has various functional components: detection and data collection, signal processing, data fusion, and notification. It processes data on different levels of abstraction, ranging from the detailed, microscopic examination, to the macroscopic view on the aggregate behavior of targets. Any events in the environment can be processed on three levels: node level, local neighborhood level, and global level. On the node level, data collection and processing occurs in each smartphone, requiring no communications except for transmission of the results to server. On the local and global level, inter-node peer to peer communication is required for gathering raw or pre-processed data from multiple nodes to a single location for data fusion. The processed data is again transmitted back to nodes, and presents them in map form.</p>
+
+<h1>
+<a id="2-high-level-requirements" class="anchor" href="#2-high-level-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. High-Level Requirements</h1>
+
+<p>The new system must include the following:</p>
+
+<ul>
+<li>  Ability to measure sound near a device</li>
+<li>  Ability to create  a wifi p2p network with other devices</li>
+<li>  Ability to create a global network client server network through internet</li>
+<li>  Ability to share data within the network </li>
+<li>  Ability to map sound levels within an area.</li>
+</ul>
+
+<h1>
+<a id="3----implementation-plan" class="anchor" href="#3----implementation-plan" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.    Implementation Plan</h1>
+
+<p>The smartphones will measure the sound level using the built in microphone and will form a network with other smartphones who have the app opened or running in background. The network protocols will enable network operation during start-up, steady state, and failure. Once the apps have started and a network is formed, most of the phones, working as a node in the network can support all the sensing, signal processing and communications tasks as required. This local p2p network will be created using Wi-Fi Direct. A node will be selected from this network which will act as a sink node, which will communicate with a server through internet. In this manner, multiple local network can form at different locations far apart from each other. All of these networks will communicate with the common server through the sink nodes present at each local network. The server will process the sound level at each node and will construct a global map, which will show sound levels near each network. The map can be formed from google map, or may be given as a input from the smartphone. The server will then send this image to each sink node, and sink nodes will broadcast this image across each node. So sound levels near different networks can be viewed from a node, beside the measured sound level at that particular node</p>
+
+<pre><code>$ go to souvikmaji/NoiseAlert3
+$ fork
+$ contribute
+$ create a new branch and push
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/souvikmaji/NoiseAlert3/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/souvikmaji/NoiseAlert3/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/souvikmaji/NoiseAlert3"></a> is maintained by <a href="https://github.com/souvikmaji">souvikmaji</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
